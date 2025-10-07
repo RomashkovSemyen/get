@@ -18,8 +18,8 @@ class r2r_dac:
             print ("Устанавливаем 0.0 В")
             return 0
         return int(number / (dynamic_range) * 255)
-    def set_voltage(self, voltage, gpio_bits):
-        GPIO.output(gpio_bits, [int(element) for element in bin(voltage)[2:].zfill(8)])
+    def set_voltage(self, voltage):
+        GPIO.output(self.gpio_bits, [int(element) for element in bin(voltage)[2:].zfill(8)])
 
 
 
@@ -30,7 +30,7 @@ if __name__ == "__main__":
             try:
                 voltage = float(input("Введите напряжение в Вольтах: "))
                 number = dac.set_number(voltage, 3.11)
-                dac.set_voltage(number, [16, 20, 21, 25, 26, 17, 27, 22])
+                dac.set_voltage(number)
 
             except ValueError:
                 print("Вы ввели не число. Попробуйте ещё раз\n")
