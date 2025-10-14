@@ -8,7 +8,7 @@ sampling_frequency = 200
 
 if __name__ == "__main__":
     try:
-        dac = r2r.R2R_DAC([16, 20, 21, 25, 26, 17, 27, 22], 3.11, True)
+        dac = r2r.R2R_DAC([16, 20, 21, 25, 26, 17, 27, 22], 3.167, True)
 
         while True:
             dac.setvoltage(amplitude * sg.get_sin_wave_amplitude(signal_frequency, time.time()))

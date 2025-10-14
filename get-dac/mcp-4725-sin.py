@@ -1,4 +1,4 @@
-import r2r_dac as r2r
+import mcp4725_driver as mcp4725
 from signal_generator import get_sin_wave_amplitude, wait_for_sampling_period
 import time
 
@@ -8,10 +8,10 @@ sampling_frequency = 1000
 
 if __name__ == "__main__":
     try:
-        dac = r2r.R2R_DAC([16, 20, 21, 25, 26, 17, 27, 22], 3.183, True)
+        dac = mcp4725.MCP4725(5.16, 0x61, True)
 
         while True:
-            dac.setvoltage(amplitude * get_sin_wave_amplitude(signal_frequency, time.time()))
+            dac.set_voltage(amplitude * get_sin_wave_amplitude(signal_frequency, time.time()))
             wait_for_sampling_period(sampling_frequency)
     finally:
         dac.deinit()

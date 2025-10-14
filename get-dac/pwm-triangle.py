@@ -7,11 +7,12 @@ signal_frequency = 10
 sampling_frequency = 1000
 
 if __name__ == "__main__":
+    dac = pwm.pwm_dac(12, 500, 3.18, True)
     try:
-        dac = pwm.PWM_DAC(12, 500, 3.18, True)
+        
 
         while True:
-            dac.setvoltage(amplitude * get_triangle_wave_amplitude(signal_frequency, time.time()))
+            dac.set_voltage(amplitude * get_triangle_wave_amplitude(signal_frequency, time.time()), 12, 3.167)
             wait_for_sampling_period(sampling_frequency)
     finally:
         dac.deinit()
