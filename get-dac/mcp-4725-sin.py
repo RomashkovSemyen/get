@@ -2,7 +2,7 @@ import mcp4725_driver as mcp4725
 from signal_generator import get_sin_wave_amplitude, wait_for_sampling_period
 import time
 
-amplitude = 3.1
+amplitude = 2
 signal_frequency = 10
 sampling_frequency = 1000
 
